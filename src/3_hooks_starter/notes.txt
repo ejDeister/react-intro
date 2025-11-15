@@ -1,0 +1,95 @@
+
+/**
+ * 1. useState
+ *      ex: 
+ *          const [num, setNum] = useState(0);
+ *          console.log(num); -> "0" 
+ *          setNum(5);                  // triggers re-render 
+ *          console.log(num); -> "5"
+ *      def: Creates a reference and a setter for the reference. The advantage of this is that
+ *          when a ref created by useState gets referenced in the DOM, it auto re-renders whenever
+ *          its value changes. No listener functions, no hassle. 
+ *      note: State updates are **async**. This means that in order to incrementally update state multiple times 
+ *          in a code block you have to do setVar(previous => previous + 1);
+ * 
+ * 2. useEffect
+ *      ex: 
+ *          const [num, setNum] = useState(0);
+ *          useEffect(() => { console.log(num); },[num]);
+ *          setNum(10);
+ *          console.log(num); // "10"
+ *      def: Triggers a callback function to run under certain conditions. 
+ *          - All effects run when the component is first mounted (added to the DOM).
+ *          - In the example above, the effect also runs each time the value of num **changes**. 
+ *          - If the array is empty, the effect ONLY runs when the component is mounted.
+ *          - If the array is omitted, the effect runs with each component re-render.
+ *          
+ *          - Also has an optional return function for cleanup - usually to "undo" something that was
+ *          done in the effect. 
+ *          - For example, if you used setInterval in the effect, you can save the interval Id and clear 
+ *          it in the cleanup function, so your code doesn't break the next time the effect runs.
+ * 
+ *      Re-rendering notes: 
+ *          A re-render is basically calling the component function again.
+ * 
+ *          - Components re-render on the following events:
+ *              - Its own state changes
+ *              - Its props change 
+ *              - Its parent re-renders
+ *              - Context it depends on changes
+ *          - Parents don't re-render when children do
+ *          - Siblings don't affect each other  
+ * 
+ *          What gets reset on a re-render?
+ *          - Variables (e.g. let myVar = "bob"; | this will get reset to bob on rerender)
+ *          - Function definitions
+ *          - Object/Array literals (e.g. const person = { name: "bob", age: 51 }; const days = ["mon", "tue", ...];)
+ *         
+ *          What persists through a re-render?
+ *          - State variables (useState)
+ *          - Refs (useRefs)
+ *          
+ * 3. createContext/useContext
+ *      ex: 
+ *          export const ThemeContext = createContext("light");
+ * 
+ *          // V *new file* V
+ *          import { ThemeContext } from "./ctx.ts"; 
+ *          const theme = useContext(ThemeContext);
+ *          console.log(theme); // "light"
+ *      def: Creates/Uses a global piece of state that can be accessed from anywhere. Note that the
+ *          example features a piece of context that is exported so that other files may import it.
+ *          It would otherwise be impossible for other files to access it. 
+ * 
+ * 4. useRef
+ *      ex: 
+ *          const countRef = useRef(0); 
+ *          countRef.current += 1; // Doesn't trigger re-render
+ *      def: Almost identical to useState, but does not trigger re-renders upon setting. Useful for tracking mutable, non-UI values.
+ * 
+ * 5. useReducer
+ *      ex: 
+ *          function getPriviliges(user, auth) {
+ *              if (!authenticateUser(user,auth)) return;
+ *              switch (auth.userType) {
+ *                  case "customer":
+ *                      user.priviliges = CustomerPriviliges; // made up object
+ *                      break;
+ *                  case "admin":
+ *                      user.priviliges = AdminPriviliges;
+ *                      break; 
+ *                  default:
+ *                      user.priviliges = GuestPriviliges;
+ *                      break;
+ *              }
+ *          }
+ * 
+ *          function Login() {
+ *              const [user, auth] = useReducer(getPriviliges);
+ *              <>
+ *                  <input id="username">
+ *                  <input id="password"> 
+ *              </>
+ *          }
+ */
+
