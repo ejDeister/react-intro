@@ -1,0 +1,24 @@
+React lesson 1:
+
+Summary:
+We covered the basics of React including JSX/TSX, Component hierarchies, and state management with useState. To reiterate, JavaScript+XML or TypeScript+XML are two sets of syntax, many parts of which resemble HTML - though they are parsed into JavaScript. Component hierachies are ways of creating distinct slices of your webpage and referencing them in a broader context, such as creating a NavBar or SideBar component, then referencing it in a HomePage component. useState is a function provided by React that accepts an initial state (e.g. 0, "hi!", { name: "Bob" }) and returns both a reference to the state, and a function to change the state. The distinguishing factor being that further changes to the state automatically propagate to all references to the state, shirking the usual requirement to manually update the state.
+
+Homework:
+Read through the comments in src/1_intro_starter/Component.tsx, making notes whenever a question is asked. Your goal for the assignment is to:
+Get Component() to display in App() in the same way that App() displays in main.tsx(Hint: The code is almost identical)
+Modify Component()'s TSX to display a new tag
+Note that you may need to save your changes in VS Code and refresh your browser to see your changes.
+
+Version control:
+If you have changes that haven't yet been committed (green or orange files in the version control tab) - you can either commit using the version control UI or:
+Navigate to the project root directory (react-intro/)
+git add .
+git commit -m "Put your commit message here, e.g. updated file.txt"
+If you haven't fetched changes in a while:
+git pull
+If you have commits that haven't been uploaded:
+git push
+
+If anything gets borked, or if you're stuck - just shoot me a quick question. Takes like 5 seconds and I'm likely to respond quickly
+
+To remain on pace for the rest of the material, this should be completed by 11/20, but preferably earlier.
