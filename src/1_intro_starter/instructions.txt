@@ -8,6 +8,7 @@ Read through the comments in src/1_intro_starter/Component.tsx, making notes whe
 Get Component() to display in App() in the same way that App() displays in main.tsx(Hint: The code is almost identical)
 Modify Component()'s TSX to display a new tag
 Note that you may need to save your changes in VS Code and refresh your browser to see your changes.
+Make sure that you have a local dev environment running - our build tool, Vite, likes to pick localhost:5173, so if that domain isn't working, try creating a new environement from the project root using "npm run dev"
 
 Version control:
 If you have changes that haven't yet been committed (green or orange files in the version control tab) - you can either commit using the version control UI or:
